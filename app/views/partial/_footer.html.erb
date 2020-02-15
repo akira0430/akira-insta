@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand navbar-light bg-light mt-auto">
+  <div class="nav navbar-nav">
+    <% if logged_in? %>
+    <p class="nav-item nav-link">
+      <%= link_to "投稿", "#", class: "nav-link" %>
+    </p>
+    <% end %>
+    <p class="nav-item nav-link">
+      <%= link_to "利用規約", contact_path, class: "nav-link" %>
+    </p>
+  </div>
+</nav>

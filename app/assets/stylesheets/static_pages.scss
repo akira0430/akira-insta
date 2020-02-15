@@ -1,0 +1,72 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.main-header1 {
+  margin-top: 70px;
+  color: #adb5bd;
+  background-image: image-url("osyare.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.main-header2 {
+  margin-top: 70px;
+  color: #3c87d2;
+  background-image: image-url("osyare2.png");
+  background-size: cover;
+  background-position: center;
+}
+
+
+.main-header3 {
+  margin-top: 70px;
+  color: #55b1b1;
+  background-image: image-url("osyare3.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.main-container {
+  height: 500px;
+  text-align: center;
+}
+
+.slide-contents-title {
+  padding-left: 50px;
+  padding-top: 80px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.slide-contents-text {
+  padding-left: 50px;
+  padding-top: 50px;
+  font-size: 30px;
+}
+
+
+.free-section .contents-main {
+  margin: auto;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.free-section .contents-text {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+// contactページ
+.wrapKOPIPE {
+  border-radius: 15px;
+  margin: 40px 0;
+  background: rgb(150, 208, 218);
+  border: 5px solid #e5eeef;
+  padding: 20px;
+}
+
+.wrapHINAGATA {
+  padding: 20px;
+}

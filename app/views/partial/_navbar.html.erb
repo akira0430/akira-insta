@@ -1,0 +1,46 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <%= link_to "", root_path, class: "navbar__brand navbar__mainLogo" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <% if logged_in? %>
+        <li class="nav-item">
+          <%= link_to "プロフィールページ", current_user, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "プロフィール編集", edit_user_path(current_user), class: "nav-link" %>
+        </li>
+        <li>
+          <%= link_to "ユーザー情報", users_path, class: "nav-link" %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", logout_path, method: :delete, class: "nav-link" %>
+        </li>
+        <li class="search-nav">
+          <%= form_tag(root_path, method: :get) do %>
+            <div class="input-group">
+              <%= search_field_tag "q", params[:q], class: "form-control", placeholder: "キーワード検索" %>
+              <span class="input-group-btn">
+                <%= submit_tag "検索", class: "btn btn-default" %>
+              </span>
+            </div>
+          <% end %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to "新規登録", signup_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン", login_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Facebookでログイン", "/auth/facebook", class: "nav-link" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>

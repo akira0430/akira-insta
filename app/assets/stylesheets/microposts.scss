@@ -1,0 +1,9 @@
+// Place all the styles related to the Microposts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.side_by_side p {
+  display:inline-block;
+  vertical-align: center;
+  padding-left: 10px;
+}
