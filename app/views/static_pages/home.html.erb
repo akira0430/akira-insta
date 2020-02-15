@@ -1,0 +1,141 @@
+<div class="a">
+<div class="b">
+<div class="main-header1">
+  <div class="main-container">
+    <div class="main-wrapper">
+        <div class="slide-contents-title">
+          様々な画像ををみんなに自慢しよう！<br>
+        </div>
+        <div class="slide-contents-text">
+          気に入った写真をSNSで簡単にシェアできます<br>
+          instagramは様々な人と共有できるサービスです<br>
+        </div>
+    </div>
+    <% if logged_in? %>
+    <h3><%= link_to "ログアウト", logout_path, method: :delete %></h3>
+    <% else %>
+    <h3><%= link_to "新規登録", signup_path %></h3>
+    <% end %>
+  </div>
+</div>
+</div>
+
+<div class="b">
+<div class="main-header2">
+  <div class="main-container">
+    <div class="main-wrapper">
+        <div class="slide-contents-title">
+          画像を投稿できます<br>
+        </div>
+        <div class="slide-contents-text">
+          気軽にフォローできます<br>
+          ユーザー名、投稿内容を検索できます<br>
+        </div>
+    </div>
+    <% if logged_in? %>
+    <h3><%= link_to "ログアウト", logout_path, method: :delete %></h3>
+    <% else %>
+    <h3><%= link_to "新規登録", signup_path %></h3>
+    <% end %>
+  </div>
+</div>
+</div>
+
+<div class="b">
+<div class="main-header3">
+  <div class="main-container">
+    <div class="main-wrapper">
+        <div class="slide-contents-title">
+          ログイン機能を今後増やす予定です<br>
+        </div>
+        <div class="slide-contents-text">
+          気軽にフォローできます<br>
+          気軽に投稿してみよう<br>
+        </div>
+    </div>
+    <% if logged_in? %>
+    <h3><%= link_to "ログアウト", logout_path, method: :delete %></h3>
+    <% else %>
+    <h3 class="mt-3"><%= link_to "新規登録", signup_path %></h3>
+    <% end %>
+  </div>
+</div>
+</div>
+
+</div>
+
+<section class="free-section">
+  <div class="container">
+    <div class="contents-main">
+      <div class="contents-text text-center">
+        気に入った画像にいいね！をしよう<br>
+        気に入った画像にコメントを送ってみよう！⁠<br>
+        いい出会いをあなたに
+      </div>
+      <div class="contents-text">
+        <% if logged_in? %>
+        <div class="row">
+          <div class="col-sm-6 mt-5">
+        <div class="card">
+          <div class="card-header">
+            投稿画面
+          </div>
+          <div class="card-body">
+              <div class="form-group row mt-2">
+                <div class="col-auto pr-0">
+                  <%= link_to gravatar_for(current_user, size: 50), current_user %>
+                </div>
+                <div class="col">
+                  <%= current_user.name %>
+                </div>
+                </div>
+                <div class="mb-3">
+                <%= link_to "プロフィールページへ", current_user %>
+                </div>
+                <div class="mb-3">
+                <%= pluralize(current_user.microposts.count, "投稿") %>
+                </div>
+                <div class="mb-3">
+                  <%= render 'shared/stats' %>
+                </div>
+
+              <div class="mb-3">
+                <%= form_with model: @micropost, local: true do |f| %>
+                <% if @micropost.errors.any? %>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>入力していない項目があります</strong>
+                  <ul class="list-group">
+                  <% @micropost.errors.full_messages.each do |msg| %>
+                  <li class="list-group-item list-group-item-danger"><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+                <% end %>
+                  <%= f.label :title, "タイトル記入欄" %>
+                  <%= f.text_field :title, class: "form-control", placeholder: "タイトルを記入してください" %>
+                  <%= f.label :content, "コンテンツ記入欄" %>
+                  <%= f.text_area :content, class: "form-control", placeholder: "新しいコンテンツを投稿してください" %>
+                  <%= f.file_field :picture, accept: 'image/jpeg,image.png', class: "form-control", placeholder: "画像を投稿してください" %>
+                  <%= f.submit "投稿", class: "btn btn-success mt-2" %>
+                <% end %>
+              </div>
+          </div>
+        </div>
+        </div>
+        <div class="col-sm-6">
+          <%= render 'shared/feed' %>
+        </div>
+        </div>
+        <% else %>
+        <div class="text-center">
+        <%= link_to "ログイン", login_path %><br>
+          もしくは<br>
+        <%= link_to "Facebookでログイン", "/auth/facebook", class: "btn btn-primary w-70" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

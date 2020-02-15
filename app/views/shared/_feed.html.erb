@@ -1,0 +1,6 @@
+<% if @feed_items.any? %>
+  <ul class="list-unstyled">
+    <%= render @feed_items %>
+  </ul>
+  <%= paginate @feed_items %>
+<% end %>

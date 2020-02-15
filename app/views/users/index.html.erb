@@ -1,0 +1,31 @@
+<% provide(:title, 'All users') %>
+<h1 class="text-center m-3">ユーザー情報</h1>
+
+<div class="container">
+  <%= paginate @users %>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">プロフ画像</th>
+      <th scope="col">氏名</th>
+      <th scope="col">ユーザー名</th>
+      <th scope="col">操作</th>
+    </tr>
+  </thead>
+  <% @users.each do |user| %>
+  <tbody>
+    <tr>
+      <th scope="row"><%= gravatar_for user, size: 50 %></th>
+      <td><%= link_to user.name, user %></td>
+      <td><%= user.user_name %></td>
+      <td>
+        <% if current_user.admin? && !current_user?(user) %>
+          <%= link_to "削除", user_path(user), method: :delete, data: { confirm: "本当に削除してよろしいですか？" }, class: 'btn btn-danger' %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+<%= paginate @users %>
+</div>

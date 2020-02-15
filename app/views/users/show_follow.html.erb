@@ -1,0 +1,41 @@
+<div class="container">
+    <% provide(:title, @title) %>
+    <div class="parent">
+      <p><%= gravatar_for @user %></p>
+      <div class="inner">
+        <h4 class="text-center">名前     :<%= @user.name %></h4>
+        <h4 class="text-center">ユーザー名:<%= @user.user_name %></h4>
+        <div class="text-center my-3">
+          <%= render 'shared/stats' %>
+        </div>
+        <h4 class="text-center">自己紹介:</h4>
+        <p><%= @user.introduction %></p>
+        <p><%= link_to "ユーザー編集", edit_user_path(current_user), class: "btn btn-outline-primary" %></p>
+        <p>
+          <%= render 'follow_form' if logged_in? %>
+        </p>
+      </div>
+    </div>
+
+  <div class=" card mt-3">
+    <div class="card-body">
+      <h3 class="card-title"><%= render 'shared/stats' %></h3>
+      <% if @users.any? %>
+        <% @users.each do |user| %>
+        <%= link_to gravatar_for(user, size: 30), user %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="text-center my-5">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <h3>投稿数(<%= @user.microposts.count %>)</h3>
+      <div class="my-3">
+        <%= render @users %>
+      </div>
+      <%= paginate @users %>
+    <% end %>
+  </div>
+</div>

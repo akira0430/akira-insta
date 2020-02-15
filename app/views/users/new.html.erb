@@ -1,0 +1,24 @@
+<% provide(:title, 'Sign up') %>
+<h1 class="text-center mt-3">新規登録</h1>
+
+<section class="form-auth text-center">
+  <%= render 'shared/error_messages' %>
+  <%= form_with model: @user, local: true do |f| %>
+    <h1 class="h3 mb-3 font-weight-normal">登録してください</h1>
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name, class:'form-control' %>
+
+    <%= f.label :user_name, "ユーザー名" %>
+    <%= f.text_field :user_name, class:'form-control' %>
+
+    <%= f.label :email, "メールアドレス" %>
+    <%= f.email_field :email, class:'form-control' %>
+
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password, class:'form-control' %>
+
+    <%= f.label :password_confirmation, "パスワード確認" %>
+    <%= f.password_field :password_confirmation, class:'form-control' %>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">登録</button>
+  <% end %>
+</section>

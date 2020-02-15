@@ -1,0 +1,28 @@
+<% provide(:title, "Log in") %>
+<h1 class="text-center">ログイン</h1>
+
+<section class="form-auth text-center">
+  <%= form_with scope: :session, url:login_path, local: true do |f| %>
+    <h1 class="h3 mb-3 font-weight-normal">ログインしてください</h1>
+    <label for="inputEmail" class="sr-only">メールアドレス</label>
+    <%=f.label :email, "メールアドレス" %>
+    <%=f.email_field :email, class:'form-control' %>
+
+    <label for="inputPassword" class="sr-only">パスワード</label>
+    <%=f.label :password, "パスワード" %>
+    <%=f.password_field :password, class: 'form-control' %>
+
+    <%= f.label :remember_me, class: "checkbox mb-3" do %>
+      <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+    <% end %>
+
+    <p class="my-3">
+      <%= link_to "Facebookでログイン", "/auth/facebook", class: "btn btn-primary w-70" %>
+    </p>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
+    <p class="mt-5 mb-3 text-muted">© 2019</p>
+  <% end %>
+
+</section>
