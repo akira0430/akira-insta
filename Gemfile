@@ -12,7 +12,7 @@ gem 'faker', '1.7.3'
 
 gem 'rails-i18n'
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 gem 'mini_magick'
 
